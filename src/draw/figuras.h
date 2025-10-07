@@ -5,11 +5,11 @@
 
 typedef enum _tipos_fig
 {
-    LINEA = 1 << 0,
-    CURVA = 1 << 1,
-    CUADRO= 1 << 2,
-    TRIAN = 1 << 3,
-    CIRC  =  1 << 4
+    LINEA = 2 << 0,
+    CURVA = 2 << 1,
+    CUADRO= 2 << 2,
+    TRIAN = 2 << 3,
+    CIRC  =  2 << 4
 } TypeFig;
 
 typedef struct _cuadro{
@@ -19,6 +19,7 @@ typedef struct _cuadro{
     int h;
     char offset_mem1[8];
     Color color;
+    Color fill;
     TypeFig type;
 } Cuadro;
 
@@ -30,6 +31,7 @@ typedef struct _circulo
     int vert;
     char offset_mem1[8];
     Color color;
+    Color fill;
     TypeFig type;
 }Circulo;
 
@@ -40,6 +42,7 @@ typedef struct _triangulo
     Vec2 p2;
     Vec2 p3;
     Color Color;
+    Color fill;
     TypeFig type;
 }Triangulo;
 
@@ -58,6 +61,7 @@ typedef struct _curva
     Vec2 p2;
     Vec2 p3;
     Color color;
+    
     TypeFig type;
 }Curva;
 
@@ -87,4 +91,5 @@ typedef union _figuras
 }Figuras;
 
 void draw_figuras(Figuras *fig);
+void fill_figura(const Figuras* f, uint32_t fillColor, int usar8);
 
